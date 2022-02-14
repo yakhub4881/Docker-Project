@@ -13,8 +13,8 @@ pipeline{
         {
             steps{
                 sh 'docker build -t $JOB_NAME:v1.$BUILD_ID .'
-                sh 'docker image tag $JOB_NAME:v1.$BUILD_ID yakhub4881/$JOB_NAME:v1.$BUILD_ID'
-                sh 'docker image tag $JOB_NAME:v1.$BUILD_ID yakhub4881/$JOB_NAME:latest'
+                sh 'docker tag webappimage:v1 yakhub4881/webappimage:v1'
+                sh 'docker tag webappimage:v1 yakhub4881/webappimage:latest'
             }
         }
     }
