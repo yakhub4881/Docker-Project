@@ -25,5 +25,15 @@ pipeline{
                  }
             }
         }
+        stage ("Deploy Container on Webapp Server")
+        {
+            steps{
+                def container_run = 'docker run -itd --name webappcontainer -p 9000:80 yakhub4881/nginximage:v1.$BUILD_ID'
+                sshagent(['webapp-nginx-server']) {
+                sh "ssh -o StrictHostKeyChecking=no centos@172.31.34.231 ${container_run}"
+                 }
+                
+            }
+        }
     }
 }
