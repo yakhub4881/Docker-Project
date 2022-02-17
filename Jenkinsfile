@@ -29,7 +29,7 @@ pipeline{
         {
             steps{
                 sshagent(['webapp-nginx-server']) {
-                sh 'ssh -o StrictHostKeyChecking=no centos@172.31.34.231 docker run -itd --name webappcontainer -p 9000:80 yakhub4881/nginximage'
+                sh 'ssh -o StrictHostKeyChecking=no centos@172.31.34.231 docker run -itd --name webappcontainer -p 9000:80 yakhub4881/nginximage:v1.1'
                  }  
             }
         }
