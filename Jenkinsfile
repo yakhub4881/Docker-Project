@@ -18,8 +18,8 @@ pipeline{
         stage ("push image to docker hub")
         {
             steps{
-                withCredentials([usernameColonPassword(credentialsId: 'Docker-Hub-Credentials', variable: 'yakhub4881')]) {
-                sh "docker login -u yakhub4881 -p ${yakhub4881}"
+                withCredentials([string(credentialsId: 'Docker-Hub', variable: 'Docker-Hub-Credentials')]) {
+                sh "docker login -u yakhub4881 -p ${Docker-Hub-Credentials}"
                 sh 'docker tag nginximage:v1.$BUILD_ID yakhub4881/nginximage:v1.$BUILD_ID'
                 sh 'docker push yakhub4881/nginximage:v1.$BUILD_ID'
                  }
