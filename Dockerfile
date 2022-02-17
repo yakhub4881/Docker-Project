@@ -6,5 +6,4 @@ RUN mkdir dummydir
 VOLUME ["/storage 1"]
 WORKDIR /dummydir
 EXPOSE ${value}
-COPY sample.txt /dummydir
 ENV USER=dummyuser
