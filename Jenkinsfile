@@ -22,6 +22,7 @@ pipeline{
                 sh "docker login -u yakhub4881 -p ${DockerPasswd}"
                 sh 'docker tag nginximage:v1.$BUILD_ID yakhub4881/nginximage:v1.$BUILD_ID'
                 sh 'docker push yakhub4881/nginximage:v1.$BUILD_ID'
+                sh 'docker push yakhub4881/nginximage:latest'
                  }
             }
         }
@@ -29,7 +30,7 @@ pipeline{
         {
             steps{
                 sshagent(['webapp-nginx-server']) {
-                sh 'ssh -o StrictHostKeyChecking=no centos@172.31.34.231 docker run -itd --name webappcontainer -p 9000:80 yakhub4881/nginximage:v1.1'
+                sh 'ssh -o StrictHostKeyChecking=no centos@172.31.34.231 docker run -itd --name webappcontainer -p 9000:80 yakhub4881/nginximage'
                  }  
             }
         }
