@@ -19,7 +19,7 @@ pipeline{
         {
             steps{
                 withCredentials([usernameColonPassword(credentialsId: 'Docker-Hub', variable: 'Docker-Hub-Credentials')]) {
-                sh 'docker login -u ${Docker-Hub} -p ${Docker-Hub-Credentials}'
+                sh "docker login -u ${Docker-Hub} -p ${Docker-Hub-Credentials}"
                 sh 'docker tag nginximage:v1.$BUILD_ID yakhub4881/nginximage:v1.$BUILD_ID'
                 sh 'docker push yakhub4881/nginximage:v1.$BUILD_ID'
                  }
