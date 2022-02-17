@@ -28,9 +28,8 @@ pipeline{
         stage ("Deploy Container on Webapp Server")
         {
             steps{
-                def docker_run = 'docker run -itd --name webappcontainer -p 9000:80 yakhub4881/nginximage'
                 sshagent(['webapp-nginx-server']) {
-                sh "ssh -o StrictHostKeyChecking=no centos@172.31.34.231 ${docker_run}"
+                sh 'ssh -o StrictHostKeyChecking=no centos@172.31.34.231 docker run -itd --name webappcontainer -p 9000:80 yakhub4881/nginximage'
                  }  
             }
         }
